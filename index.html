@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koleksi Literasi Saya</title>
+    <link rel="stylesheet" href="book.css">
+    <script src="book.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+        
+</head>
+<body>
+
+<div id="bg-layer" class="default-bg"></div>
+
+<div class="wrapper">
+
+    <!-- HEADER -->
+    <header>
+        <h1>Koleksi Buku Daman</h1>
+        <p>Melalui membaca kita akan melihat peradaban dunia.</p>
+        <div class="header-line"></div>
+    </header>
+
+    <!-- WALLPAPER PANEL -->
+    <div class="wp-panel">
+        <div class="wp-panel-title">🎨 Latar Belakang</div>
+        <div class="wp-presets">
+            <button class="wp-btn preset-1 active" title="Amber Dark" onclick="setPreset(this, 'radial-gradient(ellipse at 20% 50%, rgba(120,60,0,0.4) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(80,40,0,0.3) 0%, transparent 50%), linear-gradient(135deg, #0d0804 0%, #1a100a 40%, #0f0c08 100%)')"><span></span></button>
+            <button class="wp-btn preset-2" title="Midnight Blue" onclick="setPreset(this, 'radial-gradient(ellipse at 30% 60%, rgba(0,40,100,0.5) 0%, transparent 55%), linear-gradient(135deg, #020508 0%, #040d1a 100%)')"><span></span></button>
+            <button class="wp-btn preset-3" title="Forest" onclick="setPreset(this, 'radial-gradient(ellipse at 50% 30%, rgba(20,80,20,0.5) 0%, transparent 60%), linear-gradient(135deg, #020805 0%, #061408 100%)')"><span></span></button>
+            <button class="wp-btn preset-4" title="Purple Night" onclick="setPreset(this, 'radial-gradient(ellipse at 40% 50%, rgba(80,0,120,0.5) 0%, transparent 60%), linear-gradient(135deg, #060208 0%, #100418 100%)')"><span></span></button>
+            <button class="wp-btn preset-5" title="Deep Red" onclick="setPreset(this, 'radial-gradient(ellipse at 60% 40%, rgba(120,10,10,0.5) 0%, transparent 55%), linear-gradient(135deg, #080202 0%, #180404 100%)')"><span></span></button>
+            <button class="wp-btn preset-6" title="Charcoal" onclick="setPreset(this, 'linear-gradient(135deg, #080808 0%, #1c1c1c 100%)')"><span></span></button>
+        </div>
+        <label class="wp-upload-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload Foto
+            <input type="file" id="wp-upload" accept="image/*">
+        </label>
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar" id="statsBar">
+        <div class="stat-chip">Total Slot <strong>50</strong></div>
+        <div class="stat-chip" id="statFilled">Terisi <strong>0</strong></div>
+        <div class="stat-chip" id="statRead">Sudah Baca <strong>0</strong></div>
+        <div class="stat-chip" id="statReading">Sedang Dibaca <strong>0</strong></div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <input type="text" class="search-box" id="searchInput" placeholder="🔍  Cari judul atau pengarang...">
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery-container" id="bookGallery"></div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 &nbsp;<span>Pameran Buku Pribadi</span>&nbsp; · Klik kartu untuk mengisi data</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <h2 id="modalTitle">Edit Buku</h2>
+
+        <div class="modal-img-preview" id="imgPreview" onclick="document.getElementById('imgInput').click()">
+            <span>Klik untuk pilih foto sampul</span>
+        </div>
+        <input type="file" id="imgInput" accept="image/*" style="display:none">
+
+        <div class="form-group">
+            <label>Judul Buku</label>
+            <input type="text" id="inputTitle" placeholder="Masukkan judul buku...">
+        </div>
+        <div class="form-group">
+            <label>Pengarang</label>
+            <input type="text" id="inputAuthor" placeholder="Nama pengarang...">
+        </div>
+        <div class="form-group">
+            <label>Status Membaca</label>
+            <select id="inputStatus">
+                <option value="">— Pilih Status —</option>
+                <option value="sudah-baca">Sudah Dibaca</option>
+                <option value="sedang-baca">Sedang Dibaca</option>
+                <option value="belum-baca">Belum Dibaca</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Rating (1–5 ⭐)</label>
+            <input type="number" id="inputRating" min="1" max="5" placeholder="misal: 4">
+        </div>
+        <div class="form-group">
+            <label>Catatan Singkat</label>
+            <textarea id="inputNote" placeholder="Kesan atau catatan tentang buku ini..."></textarea>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-save" onclick="saveBook()">Simpan</button>
+            <button class="btn-clear" onclick="clearBook()">Hapus</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
